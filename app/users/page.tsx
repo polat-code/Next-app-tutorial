@@ -7,7 +7,9 @@ interface User {
 
 const UsersPage = async () => {
   // Use server-side of next.js for data fetching as much as possible
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const res = await fetch("https://jsonplaceholder.typicode.com/users", {
+    cache: "no-store",
+  }); // or {next : {revalidate : 10 }}
   const users: User[] = await res.json();
 
   return (
